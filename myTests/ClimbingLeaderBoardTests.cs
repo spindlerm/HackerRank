@@ -38,7 +38,7 @@ namespace myTests
         {
             List<int> actualResult = ClimbingLeaderBoard.Calculate_efficient(ranked, player);
 
-            Assert.Equal(result, actualResult);
+            Assert.Equal(result, actualResult); 
         }
     }
 }
