@@ -12,7 +12,7 @@ namespace myTests
         private readonly List<object[]> _data = new List<object[]>
         {
             new object[] {new List<int>{100}, new List<int> {101}, new List<int> {1}},
-            new object[] {new List<int>{100}, new List<int> {90}, new List<int> {2}} ,
+            new object[] {new List<int>{100}, new List<int> {90}, new List<int> {2}},
             new object[] {new List<int>{100,90,90,80,75,60}, new List<int> {50,65,77,90,102}, new List<int> {6,5,4,2,1}}
 
         };

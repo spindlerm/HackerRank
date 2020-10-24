@@ -115,32 +115,36 @@ Sample Output 1
             return results;
         }
 
-        public static List<int> Calculate_efficient(List<int> ranked, List<int> player)
+        public static List<int> Calculate_efficient(List<int> rankedPlayerScores, List<int> playerScores)
         {
             List<int> results = new List<int>();
+            int rank = 0;
+            int curPos = 0;
+            int prevRankedScore = -1;
+          
 
-            foreach(int playerScore in player)
+            for(int i = playerScores.Count-1; i >=0; i--)
             {
-                int rank = 1;
-                int previousRankedPlayerScore = -1;
-                foreach(int rankedPlayerScore in ranked)
+                while(curPos < rankedPlayerScores.Count && rankedPlayerScores[curPos] > playerScores[i])
                 {
-                    if (playerScore >= rankedPlayerScore)
-                    {
-                       
-                        break;
-                    }
+                    // Only up the rank if different to previous score
+                    if(rankedPlayerScores[curPos]!= prevRankedScore)
+                        rank++;  
 
-                    if(previousRankedPlayerScore ==-1 || rankedPlayerScore != previousRankedPlayerScore)
-                        rank++;
-
-                    previousRankedPlayerScore = rankedPlayerScore;
+                    //remember the previously ranked score
+                    prevRankedScore = rankedPlayerScores[curPos];
+                    curPos++;
                 }
 
-                 results.Add(rank);
-            }
+                if(playerScores[i] == prevRankedScore )
+                    results.Insert(0,rank);
+                else{
+                    results.Insert(0,rank+1);
+                }
 
-            return results; 
+            }
+            return results;
+            
         }
     }
 }
